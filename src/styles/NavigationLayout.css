@@ -1,0 +1,26 @@
+.NavigationLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 70px);
+    background-color: #F3F5F7;
+}
+
+.NavigationLayout nav {
+    margin-top: auto;
+    height: 50px;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 16px;
+}
+
+.NavigationLayout nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.NavigationLayout nav a p {
+    font-size: 12px;
+}

@@ -1,0 +1,67 @@
+.ProgressBars {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 12px;
+    background-color: #204E65;
+    gap: 12px;
+}
+
+.ProgressBars-item {
+    height: 45px;
+    background: #265F7A;
+    background: linear-gradient(105deg, #265F7A 95%, rgba(0, 212, 255, 0) 95%);
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.ProgressBars-percent {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    border-radius: 8px 0 0 8px;
+    position: relative;
+    min-width: 30px;
+}
+
+.percent-days {
+    background: #1AC7AB;
+    background: linear-gradient(105deg, #1AC7AB 90%, rgba(0, 212, 255, 0) 91%);
+}
+
+.percent-hours {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(105deg, rgba(2, 0, 36, 1) 90%, rgba(0, 212, 255, 0) 91%);
+}
+
+.percent-minutes {
+    background: #55A3E9;
+    background: linear-gradient(105deg, #55A3E9 90%, rgba(0, 212, 255, 0) 91%);
+}
+
+.percent-seconds {
+    background: #7A84CE;
+    background: linear-gradient(105deg, #7A84CE 90%, rgba(0, 212, 255, 0) 91%);
+}
+
+.percent-months {
+    background: #7A84CE;
+    background: linear-gradient(105deg, #7A84CE 90%, rgba(0, 212, 255, 0) 91%);
+}
+
+.percent-years {
+    background: #55A3E9;
+    background: linear-gradient(105deg, #55A3E9 90%, rgba(0, 212, 255, 0) 91%);
+}
+
+.ProgressBars-percent p {
+    position: absolute;
+    left: 8px;
+    min-width: 150px;
+    color: white;
+}
+
+.ProgressBars-percent p span {
+    font-weight: 600;
+}
