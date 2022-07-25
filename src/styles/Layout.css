@@ -1,12 +1,10 @@
 .Layout {
     width: 100%;
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow: hidden;
-    overflow-y: scroll;
+    overflow: scroll;
     /* background: linear-gradient(to right, rgba(250, 255, 209, 1), rgba(161, 255, 206, 1)); */
 }
 
 .Layout-content {
     min-height: calc(100vh - 70px);
+    overflow: scroll;
 }
