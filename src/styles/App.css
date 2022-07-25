@@ -24,7 +24,7 @@ a {
 
 #root {
   background-color: #1BB5CC;
-
+  overflow-y: scroll;
   min-height: 100vh;
 }
 
@@ -35,7 +35,7 @@ input::-webkit-inner-spin-button {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 0px;
   height: 100%;
   border-radius: 10px;
 }
