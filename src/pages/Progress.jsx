@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import NavigationLayout from "../containers/NavigationLayout";
 import ProgressBars from "../components/ProgressBars";
 import useProgress from "../hooks/useProgress";
