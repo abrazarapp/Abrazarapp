@@ -1,10 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Brand from "../components/Brand";
+import { UserContext } from "../context/UserContext";
 import "../styles/PersonalInfo.css";
+import { requiredFieldsError } from "../utils/popUps";
 
 const PersonalInfo = () => {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
   const [dateFrom, setDateFrom] = useState("");
@@ -32,7 +35,16 @@ const PersonalInfo = () => {
     setName(inputName.current.value);
   };
 
-  const handleContinue = () => navigate("/progress");
+  const handleContinue = () => {
+    if (name && reason && dateFrom) {
+      const newUser = { name, reason, dateFrom };
+      setUser(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser));
+      navigate("/progress");
+    } else {
+      requiredFieldsError();
+    }
+  };
 
   return (
     <div className="PersonalInfo">

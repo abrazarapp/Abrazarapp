@@ -5,6 +5,7 @@
     padding: 24px 12px;
     background-color: #204E65;
     gap: 12px;
+    min-height: 250px;
 }
 
 .ProgressBars-item {

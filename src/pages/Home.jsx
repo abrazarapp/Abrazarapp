@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import image from "../assets/images/Initial.svg";
 import { useNavigate } from "react-router-dom";
-import "../styles/Home.css";
 import Brand from "../components/Brand";
+import { UserContext } from "../context/UserContext";
+import "../styles/Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
   const handleLogin = () => navigate("/personal-info");
+
+  const handleAnonLogin = () => {
+    if (user) {
+      navigate("/progress");
+    } else {
+      navigate("/personal-info");
+    }
+  };
 
   return (
     <div className="Home">
@@ -19,7 +29,7 @@ const Home = () => {
         <button type="button" className="Home_btn btn_google" onClick={handleLogin}>
           Ingresar con Google
         </button>
-        <button type="button" className="Home_btn btn_anon" onClick={handleLogin}>
+        <button type="button" className="Home_btn btn_anon" onClick={handleAnonLogin}>
           Ingresar Anonimamente
         </button>
       </div>

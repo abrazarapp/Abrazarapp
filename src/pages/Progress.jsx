@@ -1,48 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import NavigationLayout from "../containers/NavigationLayout";
 import ProgressBars from "../components/ProgressBars";
 import useProgress from "../hooks/useProgress";
-import "../styles/Progress.css";
 import Layout from "../containers/Layout";
 import restartImage from "../assets/images/Restart.png";
-
-const initialDate = "2022-06-16T08:38:28";
+import { UserContext } from "../context/UserContext";
+import moment from "moment";
+import "../styles/Progress.css";
+import { restartGiveUpDate } from "../utils/popUps";
 
 const Progress = () => {
-  const { progress } = useProgress(initialDate);
-  // console.log(actualDate);
+  const { user, setUser } = useContext(UserContext);
+  const { progress } = useProgress(user?.dateFrom);
 
-  // function refreshClock() {
-  //   const days = ((actualDate - initialDate) / 1000 / 60 / 60 / 24).toFixed(0);
-  //   const hours = (((actualDate - initialDate) / 1000 / 60 / 60) % 24).toFixed(0);
-  //   const minutes = (((actualDate - initialDate) / 1000 / 60) % 60).toFixed(0);
-  //   const seconds = (((actualDate - initialDate) / 1000) % 60).toFixed(0);
-  //   console.log(days);
-  //   console.log(hours);
-  //   console.log(minutes);
-  //   console.log(seconds);
-  //   setActualDate(new Date().getTime());
-  // }
-
-  // useEffect(() => {
-  //   const timerId = setInterval(refreshClock, 1000);
-
-  //   return function cleanup() {
-  //     clearInterval(timerId);
-  //   };
-  // }, []);
+  const handleRestartGiveUpDate = () => {
+    restartGiveUpDate().then((answer) => {
+      if (answer) {
+        const newUser = { ...user, dateFrom: moment().format("YYYY-MM-DD HH:mm:ss") };
+        localStorage.setItem("user", JSON.stringify(newUser));
+        setUser(newUser);
+      }
+    });
+  };
 
   return (
     <Layout>
       <NavigationLayout>
         <div className="Progress">
           <div className="Progress_header">
-            <p>Felicitaciones Joan</p>
+            <p>Felicitaciones {user?.name}</p>
             <p>Has estado libre de alcohol</p>
           </div>
           <ProgressBars data={progress} />
           <div className="Progress_footer">
-            <button type="button" className="Progress_btn_restart">
+            <button type="button" className="Progress_btn_restart" onClick={handleRestartGiveUpDate}>
               <img src={restartImage} alt="Reiniciar" />
               Reiniciar el contador
             </button>

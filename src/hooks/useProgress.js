@@ -6,7 +6,8 @@ export default function useProgress(initialValue) {
   const [actualDate, setActualDate] = useState(moment().format("YYYY-MM-DD HH:mm:ss"));
 
   const refreshActualDate = () => {
-    setActualDate(moment().format("DD-MM-YYYY hh:mm:ss"));
+    const newDate = moment().format("YYYY-MM-DD HH:mm:ss");
+    setActualDate(newDate);
   };
 
   useEffect(() => {
@@ -18,6 +19,11 @@ export default function useProgress(initialValue) {
       setProgress(formatedDiff);
     }
   }, [initialValue, actualDate]);
+
+  useEffect(() => {
+    const interval = setInterval(refreshActualDate, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return { progress };
 }

@@ -32,7 +32,6 @@ const widthTransform = (value, type) => {
 };
 
 const ProgressBars = ({ data }) => {
-  console.log(data);
   return (
     <div className="ProgressBars">
       {data &&
