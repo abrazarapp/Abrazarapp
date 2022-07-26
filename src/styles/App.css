@@ -24,7 +24,6 @@ a {
 
 #root {
   background-color: #1BB5CC;
-  overflow-y: scroll;
   min-height: 100vh;
 }
 
