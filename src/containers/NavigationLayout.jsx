@@ -7,7 +7,7 @@ import "../styles/NavigationLayout.css";
 const NavigationLayout = ({ children }) => {
   return (
     <div className="NavigationLayout">
-      <section>{children}</section>
+      <section className="NavigationLayout_content">{children}</section>
       <nav className="Navbar">
         <CustomLink to="/progress">
           <FaMedal fontSize={18} color="black" />
