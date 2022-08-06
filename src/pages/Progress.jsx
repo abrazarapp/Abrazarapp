@@ -19,9 +19,14 @@ const Progress = () => {
     restartGiveUpDatePopUp().then((answer) => {
       if (answer) {
         const newUser = { ...user, dateFrom: moment().format("YYYY-MM-DD HH:mm:ss") };
-        restartGiveUpDate(newUser).then((res) => {
-          res && setUser((prevData) => ({ ...prevData, ...newUser }));
-        });
+        if (user?.credentials?.isAnonymous) {
+          localStorage.setItem("user", JSON.stringify(newUser));
+          setUser(newUser);
+        } else {
+          restartGiveUpDate(newUser).then((res) => {
+            res && setUser((prevData) => ({ ...prevData, ...newUser }));
+          });
+        }
       }
     });
   };
