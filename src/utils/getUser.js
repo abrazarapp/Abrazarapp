@@ -1,9 +1,9 @@
-import { getDocs, collection, where } from "firebase/firestore";
+import { getDocs, collection, where, query } from "firebase/firestore";
 import { db } from "./firebase";
 
 export const getUser = async (uid) => {
-  const usersRef = collection(db, "users");
-  const docSnap = await getDocs(usersRef, where("uid", "==", uid));
+  const q = query(collection(db, "users"), where("uid", "==", uid));
+  const docSnap = await getDocs(q);
   if (docSnap.empty) {
     return null;
   }

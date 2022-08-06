@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import Brand from "../components/Brand";
 import { UserContext } from "../context/UserContext";
 import "../styles/PersonalInfo.css";
@@ -7,7 +6,6 @@ import { createDBUser } from "../utils/createDBUser";
 import { requiredFieldsError } from "../utils/popUps";
 
 const PersonalInfo = () => {
-  const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
@@ -21,8 +19,11 @@ const PersonalInfo = () => {
   };
 
   useEffect(() => {
+    if (user?.credentials?.isAnonymous) {
+      setUser({ ...user, ...JSON.parse(localStorage.getItem("user")) });
+    }
     setDateFrom(toDateInputValue(new Date()));
-  }, []);
+  }, [user?.credentials?.isAnonymous, setUser, user]);
 
   const toDateInputValue = (date) => {
     const dateObj = new Date(date);
@@ -38,10 +39,15 @@ const PersonalInfo = () => {
 
   const handleContinue = () => {
     if (name && reason && dateFrom) {
-      const newUser = { name, reason, dateFrom };
-      createDBUser(newUser).then((res) => {
-        res && setUser((prevData) => ({ ...prevData, ...newUser }));
-      });
+      if (user.credentials.isAnonymous) {
+        localStorage.setItem("user", JSON.stringify({ name, reason, dateFrom }));
+        setUser({ ...user, name, reason, dateFrom });
+      } else {
+        const newUser = { name, reason, dateFrom };
+        createDBUser(newUser).then((res) => {
+          res && setUser((prevData) => ({ ...prevData, ...newUser }));
+        });
+      }
     } else {
       requiredFieldsError();
     }

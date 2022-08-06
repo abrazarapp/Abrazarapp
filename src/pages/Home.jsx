@@ -5,6 +5,7 @@ import Brand from "../components/Brand";
 import { UserContext } from "../context/UserContext";
 import { loginGoogle } from "../utils/googleSignIn";
 import "../styles/Home.css";
+import { signInAnon } from "../utils/anonSignIn";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,11 +16,7 @@ const Home = () => {
   };
 
   const handleAnonLogin = () => {
-    if (user) {
-      navigate("/progress");
-    } else {
-      navigate("/personal-info");
-    }
+    signInAnon();
   };
 
   return (
