@@ -7,18 +7,21 @@ import restartImage from "../assets/images/Restart.png";
 import { UserContext } from "../context/UserContext";
 import moment from "moment";
 import "../styles/Progress.css";
-import { restartGiveUpDate } from "../utils/popUps";
+import { restartGiveUpDatePopUp } from "../utils/popUps";
+import { restartGiveUpDate } from "../utils/restartGiveUpDate";
+import { signOutUser } from "../utils/signOut";
 
 const Progress = () => {
   const { user, setUser } = useContext(UserContext);
   const { progress } = useProgress(user?.dateFrom);
 
   const handleRestartGiveUpDate = () => {
-    restartGiveUpDate().then((answer) => {
+    restartGiveUpDatePopUp().then((answer) => {
       if (answer) {
         const newUser = { ...user, dateFrom: moment().format("YYYY-MM-DD HH:mm:ss") };
-        localStorage.setItem("user", JSON.stringify(newUser));
-        setUser(newUser);
+        restartGiveUpDate(newUser).then((res) => {
+          res && setUser((prevData) => ({ ...prevData, ...newUser }));
+        });
       }
     });
   };
@@ -37,6 +40,7 @@ const Progress = () => {
               <img src={restartImage} alt="Reiniciar" />
               Reiniciar el contador
             </button>
+            <button onClick={() => signOutUser()}>Cerrar sesion</button>
             <a href="https://aa.org.ar/informacion-primaria/informacion-general/los-doce-pasos/">
               <p>Ver los 12 pasos para superar la adiccion</p>
               <p>Alcoholicos Anonimos</p>

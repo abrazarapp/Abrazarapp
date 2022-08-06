@@ -9,7 +9,7 @@ export const requiredFieldsError = () => {
   });
 };
 
-export const restartGiveUpDate = () => {
+export const restartGiveUpDatePopUp = () => {
   const result = Swal.fire({
     title: "Es normal tener recaidas, lo importante es aprender.",
     text: "¿Quieres restablecer tu fecha de inicio a hoy?",

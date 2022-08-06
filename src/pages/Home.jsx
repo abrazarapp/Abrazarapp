@@ -3,13 +3,16 @@ import image from "../assets/images/Initial.svg";
 import { useNavigate } from "react-router-dom";
 import Brand from "../components/Brand";
 import { UserContext } from "../context/UserContext";
+import { loginGoogle } from "../utils/googleSignIn";
 import "../styles/Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const handleLogin = () => navigate("/personal-info");
+  const handleGoogleLogin = () => {
+    loginGoogle();
+  };
 
   const handleAnonLogin = () => {
     if (user) {
@@ -26,7 +29,7 @@ const Home = () => {
         <img src={image} alt="Imagen de bienvenida" />
       </div>
       <div className="Home_buttons">
-        <button type="button" className="Home_btn btn_google" onClick={handleLogin}>
+        <button type="button" className="Home_btn btn_google" onClick={handleGoogleLogin}>
           Ingresar con Google
         </button>
         <button type="button" className="Home_btn btn_anon" onClick={handleAnonLogin}>

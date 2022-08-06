@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Brand from "../components/Brand";
 import { UserContext } from "../context/UserContext";
 import "../styles/PersonalInfo.css";
+import { createDBUser } from "../utils/createDBUser";
 import { requiredFieldsError } from "../utils/popUps";
 
 const PersonalInfo = () => {
   const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [name, setName] = useState("");
   const [reason, setReason] = useState("");
   const [dateFrom, setDateFrom] = useState("");
@@ -38,9 +39,9 @@ const PersonalInfo = () => {
   const handleContinue = () => {
     if (name && reason && dateFrom) {
       const newUser = { name, reason, dateFrom };
-      setUser(newUser);
-      localStorage.setItem("user", JSON.stringify(newUser));
-      navigate("/progress");
+      createDBUser(newUser).then((res) => {
+        res && setUser((prevData) => ({ ...prevData, ...newUser }));
+      });
     } else {
       requiredFieldsError();
     }
