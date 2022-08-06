@@ -1,16 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import image from "../assets/images/Initial.svg";
-import { useNavigate } from "react-router-dom";
 import Brand from "../components/Brand";
-import { UserContext } from "../context/UserContext";
 import { loginGoogle } from "../utils/googleSignIn";
 import "../styles/Home.css";
 import { signInAnon } from "../utils/anonSignIn";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-
   const handleGoogleLogin = () => {
     loginGoogle();
   };
