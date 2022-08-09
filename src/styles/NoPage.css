@@ -1,0 +1,21 @@
+.NoPage {
+    font-size: 24px;
+    padding: 50px 30px;
+    text-align: center;
+    line-height: 35px;
+    background-color: rgba(27, 181, 204, 0.5);
+    margin: 24px 16px;
+    border-radius: 8px;
+}
+
+.NoPage p {
+    margin-top: 24px;
+}
+
+.NoPage a {
+    display: inline-block;
+    width: 100%;
+    margin: 24px 0px;
+    text-align: center;
+    color: blue;
+}

@@ -9,7 +9,6 @@ import moment from "moment";
 import "../styles/Progress.css";
 import { restartGiveUpDatePopUp } from "../utils/popUps";
 import { restartGiveUpDate } from "../utils/restartGiveUpDate";
-import { signOutUser } from "../utils/signOut";
 
 const Progress = () => {
   const { user, setUser } = useContext(UserContext);
@@ -45,7 +44,6 @@ const Progress = () => {
               <img src={restartImage} alt="Reiniciar" />
               Reiniciar el contador
             </button>
-            <button onClick={() => signOutUser()}>Cerrar sesion</button>
             <a href="https://aa.org.ar/informacion-primaria/informacion-general/los-doce-pasos/">
               <p>Ver los 12 pasos para superar la adiccion</p>
               <p>Alcoholicos Anonimos</p>

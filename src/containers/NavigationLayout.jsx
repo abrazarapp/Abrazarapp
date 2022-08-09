@@ -9,7 +9,7 @@ const NavigationLayout = ({ children }) => {
     <div className="NavigationLayout">
       <section className="NavigationLayout_content">{children}</section>
       <nav className="Navbar">
-        <CustomLink to="/progress">
+        <CustomLink to="/">
           <FaMedal fontSize={18} color="black" />
           <p>Progreso</p>
         </CustomLink>
@@ -17,15 +17,15 @@ const NavigationLayout = ({ children }) => {
           <IoIosPeople fontSize={18} color="black" />
           <p>Comunidad</p>
         </CustomLink>
-        <CustomLink to="/">
+        <CustomLink to="/sponsorship">
           <FaPeopleArrows fontSize={18} color="black" />
           <p>Padrino</p>
         </CustomLink>
-        <CustomLink to="/">
+        <CustomLink to="/help">
           <FaHandsHelping fontSize={18} color="black" />
           <p>Ayuda</p>
         </CustomLink>
-        <CustomLink to="/">
+        <CustomLink to="/references">
           <FaInfoCircle fontSize={18} color="black" />
           <p>Referencias</p>
         </CustomLink>

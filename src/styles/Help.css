@@ -1,0 +1,21 @@
+.Help {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+}
+
+.Help h3 {
+    text-align: center;
+}
+
+.Help p {
+    margin-top: 16px;
+}
+
+.Help_links a {
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    margin-top: 12px;
+    text-decoration: underline !important;
+}
