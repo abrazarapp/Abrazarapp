@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import NavigationLayout from "../containers/NavigationLayout";
 import Layout from "../containers/Layout";
-import { UserContext } from "../context/UserContext";
+// import { UserContext } from "../context/UserContext";
 import "../styles/Help.css";
 
 const Help = () => {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
 
   return (
     <Layout>
       <NavigationLayout>
         <div className="Help">
-          <h3>{user.name}</h3>
           <p>Sabemos que es un proceso complicado, te recomendamos que te comuniques con alguien de confianza y le cuentes por lo que estas pasando. Recorda que es algo normal.</p>
           <p>A continuación te dejamos cierta información importante para que tengas a disposición:</p>
           <div className="Help_links">

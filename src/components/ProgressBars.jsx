@@ -1,14 +1,6 @@
 import React from "react";
+import dateTransform from "../utils/dateTransform";
 import "../styles/ProgressBars.css";
-
-const dateTransform = {
-  years: "años",
-  months: "meses",
-  days: "días",
-  hours: "horas",
-  minutes: "minutos",
-  seconds: "segundos",
-};
 
 const widthTransform = (value, type) => {
   if (type === "days") {
@@ -35,18 +27,15 @@ const ProgressBars = ({ data }) => {
   return (
     <div className="ProgressBars">
       {data &&
-        Object.entries(data)
-          .reverse()
-          .filter(([, value]) => value > 0)
-          .map((item, index) => (
-            <div key={`ProgressBar-${index}`} className="ProgressBars-item">
-              <div className={`ProgressBars-percent percent-${item[0]}`} style={{ width: widthTransform(item[1], item[0]) }}>
-                <p>
-                  <span>{item[1]}</span> {dateTransform[item[0]]}
-                </p>
-              </div>
+        data.map((item, index) => (
+          <div key={`ProgressBar-${index}`} className="ProgressBars-item">
+            <div className={`ProgressBars-percent percent-${item[0]}`} style={{ width: widthTransform(item[1], item[0]) }}>
+              <p>
+                <span>{item[1]}</span> {dateTransform[item[0]]}
+              </p>
             </div>
-          ))}
+          </div>
+        ))}
     </div>
   );
 };

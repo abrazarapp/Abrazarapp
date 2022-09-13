@@ -1,24 +1,26 @@
 .NavigationLayout {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
     background-color: #F3F5F7;
     position: relative;
+
 }
 
 .NavigationLayout nav {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 60px;
     background-color: #fafafa;
     display: flex;
     justify-content: space-between;
     padding: 0px 16px;
+    box-shadow: 0px -5px 30px 0px rgb(2 12 17 / 25%);
 }
 
 .NavigationLayout_content {
-    height: calc(100vh - 120px);
+    height: calc(100vh - 60px);
     overflow-y: auto;
 }
 

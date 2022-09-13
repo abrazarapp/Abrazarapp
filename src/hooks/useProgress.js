@@ -16,7 +16,11 @@ export default function useProgress(initialValue) {
       const diff = moment(actualDate).diff(oldDate);
       const formatedDiff = moment.duration(diff)._data;
       delete formatedDiff.milliseconds;
-      setProgress(formatedDiff);
+      const formatProgress = Object.entries(formatedDiff)
+        .reverse()
+        .filter(([, value]) => value > 0)
+        .map(([key, value]) => [key, value]);
+      setProgress(formatProgress);
     }
   }, [initialValue, actualDate]);
 

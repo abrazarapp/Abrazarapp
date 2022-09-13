@@ -6,10 +6,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    font-size: 24px;
-    background-color: #1bb4cc81;
-    margin: 12px 8px;
+    padding: 40px 14px 10px;
+    font-size: 16px;
     border-radius: 8px;
 }
 
@@ -21,7 +19,8 @@
     padding: 12px 24px;
     width: 300px;
     font-size: 20px;
-    background-color: #D9D9D9;
+    background-color: #df3939;
+    color: white;
     margin: 8px auto;
     border-radius: 8px;
     border: none;
@@ -34,10 +33,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: black;
 }
 
 .Progress_footer a p {
     font-size: 16px;
-    color: black;
+    color: blue;
+    padding-bottom: 2px;
+    border-bottom: 1px solid blue;
 }

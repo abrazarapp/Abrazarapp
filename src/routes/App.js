@@ -8,6 +8,7 @@ import Progress from "../pages/Progress";
 import NoPage from "../pages/NoPage";
 import Help from "../pages/Help";
 import References from "../pages/References";
+import Shared from "../pages/Shared";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -33,6 +34,7 @@ function App() {
           )}
         </>
       )}
+      <Route path="/shared/:uid" element={<Shared />} />
     </Routes>
   );
 }
