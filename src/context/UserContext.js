@@ -14,6 +14,10 @@ export const UserProvider = ({ children }) => {
         getUser(user.uid).then((userInfo) => {
           console.log({ credentials: user, ...userInfo });
           setUser({ credentials: user, ...userInfo });
+          if (user?.isAnonymous) {
+            const localUser = JSON.parse(localStorage.getItem("user"));
+            setUser({ credentials: user, ...localUser });
+          }
         });
       } else {
         console.log("no user");

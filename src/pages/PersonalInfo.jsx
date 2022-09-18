@@ -23,7 +23,7 @@ const PersonalInfo = () => {
       setUser({ ...user, ...JSON.parse(localStorage.getItem("user")) });
     }
     setDateFrom(toDateInputValue(new Date()));
-  }, [user?.credentials?.isAnonymous, setUser, user]);
+  }, [user?.credentials?.isAnonymous]);
 
   const toDateInputValue = (date) => {
     const dateObj = new Date(date);
