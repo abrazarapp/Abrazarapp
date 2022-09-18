@@ -19,11 +19,11 @@ const PersonalInfo = () => {
   };
 
   useEffect(() => {
-    if (user?.credentials?.isAnonymous) {
-      setUser({ ...user, ...JSON.parse(localStorage.getItem("user")) });
-    }
+    // if (user?.credentials?.isAnonymous) {
+    //   setUser({ ...user, ...JSON.parse(localStorage.getItem("user")) });
+    // }
     setDateFrom(toDateInputValue(new Date()));
-  }, [user?.credentials?.isAnonymous]);
+  }, []);
 
   const toDateInputValue = (date) => {
     const dateObj = new Date(date);
