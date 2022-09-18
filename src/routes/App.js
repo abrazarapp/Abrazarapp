@@ -9,6 +9,7 @@ import NoPage from "../pages/NoPage";
 import Help from "../pages/Help";
 import References from "../pages/References";
 import Shared from "../pages/Shared";
+import HelpAssets from "../pages/HelpAssets";
 
 function App() {
   const { user } = useContext(UserContext);
@@ -17,7 +18,7 @@ function App() {
     <Routes>
       {!user ? (
         <>
-          <Route path="/" element={<Home />} />
+          <Route path="/*" element={<Home />} />
         </>
       ) : (
         <>
@@ -29,6 +30,7 @@ function App() {
               <Route path="/comunity" element={<NoPage />} />
               <Route path="/sponsorship" element={<NoPage />} />
               <Route path="/help" element={<Help />} />
+              <Route path="/help/:id" element={<HelpAssets />} />
               <Route path="/references" element={<References />} />
             </>
           )}
